@@ -7,8 +7,7 @@
                 "C:/msys64/mingw64/include",
                 "C:/msys64/mingw64/include/QtCore",
                 "C:/msys64/mingw64/include/QtCore/5.15.16/QtCore",
-                "C:/msys64/mingw64/include/qt5/QtCore",
-                "C:/msys64/mingw64/include/qt5/QtWidgets",
+                "C:/msys64/mingw64/include/QtWidgets",
                 "${workspaceFolder}/**"
             ],
             "defines": [],
@@ -20,9 +19,7 @@
                 "path": [
                     "C:/msys64/mingw64/include",
                     "C:/msys64/mingw64/include/QtCore",
-                    "C:/msys64/mingw64/include/QtCore/5.15.16/QtCore",
-                    "C:/msys64/mingw64/include/qt5/QtCore",
-                    "C:/msys64/mingw64/include/qt5/QtWidgets"
+                    "C:/msys64/mingw64/include/QtWidgets"
                 ],
                 "limitSymbolsToIncludedHeaders": true
             }
