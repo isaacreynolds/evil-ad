@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'main.cpp'
+** Meta object code from reading C++ file 'mainwindow.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.16)
 **
@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
+#include "mainwindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
