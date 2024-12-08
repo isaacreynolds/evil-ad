@@ -256,7 +256,6 @@ Makefile: evil-ad.pro C:/msys64/mingw64/share/qt5/mkspecs/win32-g++/qmake.conf C
 		C:/msys64/mingw64/share/qt5/mkspecs/features/resolve_config.prf \
 		C:/msys64/mingw64/share/qt5/mkspecs/features/exclusive_builds_post.prf \
 		C:/msys64/mingw64/share/qt5/mkspecs/features/default_post.prf \
-		C:/msys64/mingw64/share/qt5/mkspecs/features/win32/console.prf \
 		C:/msys64/mingw64/share/qt5/mkspecs/features/precompile_header.prf \
 		C:/msys64/mingw64/share/qt5/mkspecs/features/warn_on.prf \
 		C:/msys64/mingw64/share/qt5/mkspecs/features/qt.prf \
@@ -267,11 +266,13 @@ Makefile: evil-ad.pro C:/msys64/mingw64/share/qt5/mkspecs/win32-g++/qmake.conf C
 		C:/msys64/mingw64/share/qt5/mkspecs/features/uic.prf \
 		C:/msys64/mingw64/share/qt5/mkspecs/features/qmake_use.prf \
 		C:/msys64/mingw64/share/qt5/mkspecs/features/file_copies.prf \
+		C:/msys64/mingw64/share/qt5/mkspecs/features/win32/windows.prf \
 		C:/msys64/mingw64/share/qt5/mkspecs/features/testcase_targets.prf \
 		C:/msys64/mingw64/share/qt5/mkspecs/features/exceptions.prf \
 		C:/msys64/mingw64/share/qt5/mkspecs/features/yacc.prf \
 		C:/msys64/mingw64/share/qt5/mkspecs/features/lex.prf \
 		evil-ad.pro \
+		C:/msys64/mingw64/lib/qtmain.prl \
 		C:/msys64/mingw64/share/qt5/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile evil-ad.pro
 C:/msys64/mingw64/share/qt5/mkspecs/features/spec_pre.prf:
@@ -460,7 +461,6 @@ C:/msys64/mingw64/share/qt5/mkspecs/features/win32/default_pre.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/resolve_config.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/exclusive_builds_post.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/default_post.prf:
-C:/msys64/mingw64/share/qt5/mkspecs/features/win32/console.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/precompile_header.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/warn_on.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/qt.prf:
@@ -471,11 +471,13 @@ C:/msys64/mingw64/share/qt5/mkspecs/features/win32/opengl.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/uic.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/qmake_use.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/file_copies.prf:
+C:/msys64/mingw64/share/qt5/mkspecs/features/win32/windows.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/testcase_targets.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/exceptions.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/yacc.prf:
 C:/msys64/mingw64/share/qt5/mkspecs/features/lex.prf:
 evil-ad.pro:
+C:/msys64/mingw64/lib/qtmain.prl:
 C:/msys64/mingw64/share/qt5/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile evil-ad.pro

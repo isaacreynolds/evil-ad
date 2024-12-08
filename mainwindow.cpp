@@ -8,7 +8,7 @@
 #include <QString>
 #include <unordered_map>
 #include <QMessageBox>
-#include <QTableWidgetItem> // Missing include for QTableWidgetItem
+#include <QTableWidgetItem> // Ensure this is included for using QTableWidgetItem
 
 class Portfolio {
 private:
@@ -16,11 +16,13 @@ private:
     std::unordered_map<std::string, double> prices;    // Symbol -> Price
 
 public:
+    // Add a position to the portfolio
     void addPosition(const std::string& symbol, double quantity, double price) {
         positions[symbol] += quantity;
         prices[symbol] = price;
     }
 
+    // Get the total portfolio value
     double getPortfolioValue() const {
         double totalValue = 0.0;
         for (const auto& [symbol, quantity] : positions) {
@@ -29,17 +31,19 @@ public:
         return totalValue;
     }
 
+    // Get all positions (symbol -> quantity)
     const std::unordered_map<std::string, double>& getPositions() const {
         return positions;
     }
 
+    // Get all prices (symbol -> price)
     const std::unordered_map<std::string, double>& getPrices() const {
         return prices;
     }
 };
 
 class MainWindow : public QMainWindow {
-    Q_OBJECT  // Ensure this macro is present
+    Q_OBJECT  // Necessary for Qt's meta-object system
 
 private:
     Portfolio portfolio;
@@ -49,12 +53,13 @@ private:
     QLineEdit* quantityInput;
     QLineEdit* priceInput;
 
+    // Update the UI with the latest portfolio value and table data
     void updateUI() {
-        // Update portfolio value
+        // Update portfolio value label
         double portfolioValue = portfolio.getPortfolioValue();
         portfolioValueLabel->setText("Portfolio Value: $" + QString::number(portfolioValue, 'f', 2));
 
-        // Update table
+        // Update the table with positions
         int row = 0;
         for (const auto& [symbol, quantity] : portfolio.getPositions()) {
             bool symbolFound = false;
@@ -68,7 +73,7 @@ private:
                     break;
                 }
             }
-            // If the symbol was not found, add a new row
+            // If the symbol is not found, add a new row
             if (!symbolFound) {
                 portfolioTable->insertRow(row);
                 portfolioTable->setItem(row, 0, new QTableWidgetItem(QString::fromStdString(symbol)));
@@ -86,9 +91,11 @@ public:
         QWidget* centralWidget = new QWidget(this);
         QVBoxLayout* layout = new QVBoxLayout(centralWidget);
 
+        // Portfolio value label
         portfolioValueLabel = new QLabel("Portfolio Value: $0.00", this);
         layout->addWidget(portfolioValueLabel);
 
+        // Portfolio table to display positions (Symbol, Quantity, Price)
         portfolioTable = new QTableWidget(this);
         portfolioTable->setColumnCount(3);
         portfolioTable->setHorizontalHeaderLabels({"Symbol", "Quantity", "Price"});
@@ -107,7 +114,7 @@ public:
         priceInput->setPlaceholderText("Enter price (e.g., 150.0)");
         layout->addWidget(priceInput);
 
-        // Button to add a position
+        // Button to add a new position to the portfolio
         QPushButton* addButton = new QPushButton("Add Position", this);
         layout->addWidget(addButton);
         connect(addButton, &QPushButton::clicked, this, &MainWindow::onAddPosition);
@@ -119,21 +126,26 @@ public:
     ~MainWindow() {}
 
 private slots:
+    // Slot to handle adding a new position
     void onAddPosition() {
         std::string symbol = symbolInput->text().toStdString();
         bool okQuantity, okPrice;
         double quantity = quantityInput->text().toDouble(&okQuantity);
         double price = priceInput->text().toDouble(&okPrice);
 
+        // Validate input
         if (symbol.empty() || !okQuantity || !okPrice || quantity <= 0 || price <= 0) {
             QMessageBox::warning(this, "Invalid Input", "Please enter valid symbol, quantity, and price.");
             return;
         }
 
+        // Add the position to the portfolio
         portfolio.addPosition(symbol, quantity, price);
+
+        // Update the UI
         updateUI();
 
-        // Clear inputs
+        // Clear input fields
         symbolInput->clear();
         quantityInput->clear();
         priceInput->clear();

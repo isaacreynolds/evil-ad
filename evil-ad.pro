@@ -1,4 +1,5 @@
 TEMPLATE = app
-CONFIG += console c++11
+CONFIG += c++17 widgets
 QT += widgets  
-SOURCES += main.cpp
+SOURCES += main.cpp moc_main.cpp
+
