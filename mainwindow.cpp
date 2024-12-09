@@ -3,7 +3,32 @@
 #include <QTableWidgetItem>
 #include <QString>
 
-// Constructor definition
+void Portfolio::addPosition(const std::string& symbol, double quantity, double price) {
+    positions[symbol] = quantity;
+    prices[symbol] = price;
+}
+
+double Portfolio::getPortfolioValue() const {
+    double value = 0;
+    for (auto& [symbol, quantity] : positions) {
+        double price = prices.at(symbol);
+        value += price*quantity;
+    }
+    return value;
+}
+
+const std::unordered_map<std::string, double>& Portfolio::getPositions() const {
+    return positions;
+}
+
+const std::unordered_map<std::string, double>& Portfolio::getPrices() const {
+    return prices;
+}
+
+MainWindow::~MainWindow() {
+
+}
+
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     setWindowTitle("Risk Management System");
 
@@ -36,11 +61,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 
     setCentralWidget(centralWidget);
     resize(600, 400);
-}
-
-// Destructor definition
-MainWindow::~MainWindow() {
-    // Cleanup if necessary
 }
 
 // Slot function definition
